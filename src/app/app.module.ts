@@ -2,15 +2,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import {RoutingModule} from './modules/routing.module';
+import {HomeComponent} from './components/home/home.component';
+import {BasketComponent} from './components/basket/basket.component';
+import {HttpService} from './services/http.service';
+import {CoreService} from './services/core.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    BasketComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService, CoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
