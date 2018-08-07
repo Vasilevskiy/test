@@ -7,20 +7,21 @@ import {HomeComponent} from './components/home/home.component';
 import {BasketComponent} from './components/basket/basket.component';
 import {HttpService} from './services/http.service';
 import {CoreService} from './services/core.service';
+import {BasketService} from './services/basket.service';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BasketComponent
+    BasketComponent,
   ],
   imports: [
     BrowserModule,
     RoutingModule,
     HttpClientModule
   ],
-  providers: [HttpService, CoreService],
+  providers: [HttpService, CoreService, BasketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

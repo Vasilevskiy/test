@@ -1,0 +1,9 @@
+.product-overlay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.addItemBtn {
+  margin-bottom: 50px;
+}

@@ -1,0 +1,14 @@
+.total-price {
+  margin-top: 10px;
+  float: right;
+}
+
+.badge {
+  cursor: pointer;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,3 +1,26 @@
-<h1>
-  Welcome to {{title}} component
-</h1>
+<div class="container">
+  <h1 class="display-4" *ngIf="itemsBasket.products.length > 0">Your Basket:</h1>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="products-overlay mt-4" *ngIf="itemsBasket.products.length > 0">
+
+        <ul class="list-group">
+          <li *ngFor="let product of itemsBasket?.products; let i = index " class="list-group-item mt-2">
+            <div class="product-name-price">
+              <p>Product: <b>{{product.name}}</b></p>
+              <p class="price">price: <b>{{product.price | currency}}</b></p>
+            </div>
+            <span class="badge badge-info" (click)="deleteItem(i)">Delete</span>
+          </li>
+        </ul>
+        <span class="total-price">Total: <b>{{itemsBasket.price | currency}}</b></span>
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron mt-4" *ngIf="itemsBasket.products.length < 1">
+    <h1 class="display-4">Nothing here yet :(</h1>
+    <p class="lead">We have a lot of interesting products go and choose what you want!</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" routerLink="/home" role="button">Go Shopping</a>
+  </div>
+</div>
