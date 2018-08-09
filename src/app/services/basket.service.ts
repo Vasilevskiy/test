@@ -1,6 +1,15 @@
 import {Injectable} from '@angular/core';
 import {CoreService} from './core.service';
 
+interface Product {
+  id: number;
+  imgUrl: string;
+  name: string;
+  price: string;
+  sale: boolean;
+  qty: number;
+}
+
 @Injectable()
 export class BasketService {
   public basket = {
@@ -18,7 +27,7 @@ export class BasketService {
     }
   }
  // Проверяем на наличие подобных элементов в массиве
-  basketSearch(product): boolean {
+  basketSearch(product: Product): boolean {
     let bool = false;
     this.basket.products.forEach((item: any) => {
       if (product.id === item.id && !product.sale) {
@@ -34,7 +43,7 @@ export class BasketService {
 
   // Добавляем элемент в корзину
 
-  addToBasket(product: any): void {
+  addToBasket(product: Product): void {
     const searchResult = this.basketSearch(product);
     if (!searchResult) {
       this.basket.products.push(product);
