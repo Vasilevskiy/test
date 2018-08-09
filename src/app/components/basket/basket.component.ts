@@ -6,21 +6,22 @@ import {BasketService} from '../../services/basket.service';
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
-export class BasketComponent implements OnInit{
-  title = 'basket';
+export class BasketComponent implements OnInit {
   itemsBasket = {
     products: [],
-    price: null
+    price: 0
   };
   constructor(private basket: BasketService) {}
 
+  // При инициализации компонента мы достаем корзину с продуктами
+
   ngOnInit () {
     this.itemsBasket = this.basket.getBasket();
-    console.log(this.itemsBasket);
   }
 
-  deleteItem(productId) {
-    // console.log(productId);
+  // Удаление продукта из корзины
+
+  deleteItem(productId: number): void {
     this.basket.deleteFromBasket(productId);
   }
 }

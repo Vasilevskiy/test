@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../../services/http.service';
-import {pipe} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {BasketService} from '../../services/basket.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,20 +8,23 @@ import {Router} from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title = 'home';
   public products = [];
+  public chosenItem = {};
+
 
   constructor(private http: HttpService, private basket: BasketService) {}
+
+  // При инициализации компонента получаем с сервера наши товары.
+
+
   ngOnInit() {
-    this.http.getProducts().subscribe((res: any) => res.map( val => {
-      this.products.push(val);
-    }));
-    console.log(this.products);
+    this.http.getProducts().subscribe((res: any) => this.products = res);
   }
 
-  addProduct(product) {
-    this.basket.addToBasket(product);
+  // Добавляем продукт в корзину
+
+  addProduct(product): void {
+    this.chosenItem = product;
+    this.basket.addToBasket(this.chosenItem);
   }
-
-
 }

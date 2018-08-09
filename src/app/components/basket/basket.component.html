@@ -9,6 +9,7 @@
             <div class="product-name-price">
               <p>Product: <b>{{product.name}}</b></p>
               <p class="price">price: <b>{{product.price | currency}}</b></p>
+              <p>Quantity: <b>{{product.qty}}</b></p>
             </div>
             <span class="badge badge-info" (click)="deleteItem(i)">Delete</span>
           </li>
